@@ -17,8 +17,14 @@ public class AggregatorService {
    @KafkaListener(id = "consumer", topics = {"${kafka.topic}"} )
    public void onMessage(ConsumerRecord<?, ?> record) {
 
-      System.out.println("The list of Crypto currencies is : " + record.value());
+      System.out.println("The list of values is : " + record.value());
 
+      Emotion convertedEmotionData = new Emotion();
+      convertedEmotionData.setHappiness(record.value().happiness());
+      convertedEmotionData.setAnger(record.value().anger());
+      convertedEmotionData.setNeutrality(record.value().neutrality());
+      convertedEmotionData.setFear(record.value().fear());
+      convertedEmotionData.setSadness(record.value().sadness());
    }
 }
 

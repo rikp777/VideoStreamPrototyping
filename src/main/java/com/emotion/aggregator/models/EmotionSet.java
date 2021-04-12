@@ -9,6 +9,6 @@ public class EmotionSet {
     private EmotionServiceType emotionServiceType;
     private Emotion emotion;
     private String mainEmotion;
-
+    private Timestamp timestamp;
 
 }

@@ -11,10 +11,11 @@ import java.math.BigDecimal;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonDeserialize(using = ItemDeserializer.class)
 public class Emotion {
-    private BigDecimal happiness;
-    private BigDecimal anger;
-    private BigDecimal neutrality;
-    private BigDecimal fear;
-    private BigDecimal sadness;
+    private double happiness;
+    private double anger;
+    private double neutrality;
+    private double fear;
+    private double sadness;
 }
