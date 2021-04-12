@@ -1,5 +1,7 @@
 package com.emotion.aggregator.models;
 
+import java.sql.Timestamp;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,5 +12,4 @@ public class EmotionSet {
     private Emotion emotion;
     private String mainEmotion;
     private Timestamp timestamp;
-
 }

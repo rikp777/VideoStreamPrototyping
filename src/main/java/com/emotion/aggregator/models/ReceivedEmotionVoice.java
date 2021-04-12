@@ -3,18 +3,22 @@ package com.emotion.aggregator.models;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
+@Getter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class Emotion {
-    private double happiness;
-    private double anger;
+@AllArgsConstructor
+public class ReceivedEmotionVoice {
+
+    private String type;
+    private String timeStamp;
     private double neutrality;
-    private double fear;
+    private double happiness;
     private double sadness;
+    private double anger;
+    private double fear;
+    private int emotion;
 }

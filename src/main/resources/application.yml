@@ -19,7 +19,6 @@ group.id: group1
 kafka.auto.offset.reset: earliest
 kafka.topic: my-first-topic1
 
-
 ---
 
 spring:

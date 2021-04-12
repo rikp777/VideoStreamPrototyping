@@ -1,6 +1,7 @@
 package com.emotion.aggregator.controller;
 
 import com.emotion.aggregator.models.Emotion;
+import com.emotion.aggregator.models.ReceivedEmotionVoice;
 import com.emotion.aggregator.service.AggregatorServiceTestProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -24,13 +25,15 @@ public class controller {
 
     @RequestMapping(value="/json")
     public String getResult(){
-        List<Emotion> cryptoCurrencyList = Stream
-                .of(Emotion.builder()
-                        .anger(new BigDecimal(0.92))
-                        .happiness(new BigDecimal(0.01))
-                        .neutrality(new BigDecimal(0.10))
-                        .sadness(new BigDecimal(0.25))
-                        .fear(new BigDecimal(0.25))
+        List<ReceivedEmotionVoice> cryptoCurrencyList = Stream
+                .of(ReceivedEmotionVoice.builder()
+                        .anger((0.92d))
+                        .happiness((0.01d))
+                        .neutrality((0.10d))
+                        .sadness((0.25d))
+                        .fear((0.25d))
+                        .emotion(0)
+                        .type("test")
                         .build()
                 )
                 .collect(Collectors.toList());

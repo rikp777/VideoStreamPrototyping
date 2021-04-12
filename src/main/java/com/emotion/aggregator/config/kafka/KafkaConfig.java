@@ -1,11 +1,13 @@
 package com.emotion.aggregator.config.kafka;
 
 import com.emotion.aggregator.models.Emotion;
+import com.emotion.aggregator.models.ReceivedEmotionVoice;
 import com.emotion.aggregator.service.AggregatorService;
 import com.emotion.aggregator.service.AggregatorServiceTestProducer;
 import com.fasterxml.jackson.databind.deser.std.MapDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.protocol.types.Field;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +48,14 @@ public class KafkaConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, List<Emotion>> consumerFactory() {
+    public ConsumerFactory<String, String> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
                 new JsonDeserializer<>());
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, List<Emotion>> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, List<Emotion>> factory =
+    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, String> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
@@ -80,12 +82,12 @@ public class KafkaConfig {
     }
 
     @Bean
-    public ProducerFactory<String, List<Emotion>> producerFactory() {
+    public ProducerFactory<String, String> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
 
     @Bean
-    public KafkaTemplate<String, List<Emotion>> kafkaTemplate() {
+    public KafkaTemplate<String, String> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 
